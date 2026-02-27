@@ -53,7 +53,7 @@
     typst
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     # On macOS we rely on AppleClang
-    gcc
-    clang
+    (lib.loPrio gcc)
+    (lib.hiPrio clang)
   ];
 }
