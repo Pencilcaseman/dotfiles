@@ -2,7 +2,7 @@
 
 # Clone neovim configuration
 if [ ! -d nvim ]; then
-    git clone --recursive https://Pencilcaseman/nvim-config.git nvim
+    git clone --recursive https://github.com/Pencilcaseman/nvim-config.git nvim
 fi
 
 # Symlink tmux configuration
