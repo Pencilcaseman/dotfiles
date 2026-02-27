@@ -23,7 +23,7 @@
       polars
     ]))
     pypy3
-    codon
+    # codon
     uv
     basedpyright
     ruff
