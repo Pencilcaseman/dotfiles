@@ -1,0 +1,26 @@
+# Annoying files we don't want to track
+.DS_Store
+
+# Things I don't really care about the configuration of for one reason or another
+ghidra/
+helix/runtime/
+ghc/ghci_history
+carapace/
+cabal/
+btop/
+peazip/
+raycast/
+swiftpm/
+vale/
+wandb/
+wireshark/
+yarn/
+
+# Stuff I don't really want tracked
+jj/repos/
+jj/workspaces/
+karabiner/automatic_backups/
+op/
+direnv/
+
+nushell/history.txt
