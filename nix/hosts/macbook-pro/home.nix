@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ../../modules/shell/shell.nix
-    ../../modules/cli.nix
     ../../modules/apps.nix
+    ../../modules/cli.nix
     ../../modules/dev.nix
+    ../../modules/shell/shell.nix
   ];
 
   home.username = "tobydavis";
