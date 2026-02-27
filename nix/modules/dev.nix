@@ -41,11 +41,17 @@
     cargo-pgo
     cargo-release
     cargo-show-asm
+    cargo-update
 
     # Node/JS
     nodejs_22
     typescript
     # deno
+
+    # Java
+    jdk
+    gradle
+    maven
 
     # Typesetting
     texliveFull

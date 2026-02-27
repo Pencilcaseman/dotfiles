@@ -10,9 +10,14 @@
     neovim
     fresh-editor
 
+    # Multiplexers
+    tmux
+    zellij
+
     # Core Tools
     bat
     btop
+    dust
     fd
     flamegraph
     fzf
@@ -32,6 +37,7 @@
     # Git
     gh
     git
+    git-lfs
     gitoxide
     lazygit
     jujutsu

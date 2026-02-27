@@ -54,6 +54,9 @@
       "floorp"
       "ghostty"
       "raycast"
+      "libreoffice"
+
+      # "netbirdio/tap/netbird-ui" # Installed as an app
     ];
 
     # Get app ID by running `mas search <app name>` in terminal

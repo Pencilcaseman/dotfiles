@@ -42,7 +42,6 @@
         btmb = "btm --basic";
         sg   = "gh copilot suggest";
         fs   = "yazi";
-        diff = "difft";
         lg   = "lazygit";
 
         mvc = "mullvadforceconnect";
@@ -51,12 +50,12 @@
       };
 
       extraEnv = ''
-        $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
-        $env.NH_HOME_FLAKE   = ($env.XDG_CONFIG_HOME | path join "home-manager")
-        $env.CARAPACE_BRIDGES = "zsh,fish"
+        $env.XDG_CONFIG_HOME            = "${config.xdg.configHome}"
+        $env.NH_FLAKE                   = (["${config.xdg.configHome}", "nix"] | path join)
+        $env.CARAPACE_BRIDGES           = "zsh,fish,bash,inshellisense"
         $env.PROMPT_INDICATOR_VI_NORMAL = ""
         $env.PROMPT_INDICATOR_VI_INSERT = ""
-        $env.MACOSX_DEPLOYMENT_TARGET = ( sw_vers -productVersion )
+        $env.MACOSX_DEPLOYMENT_TARGET   = ( sw_vers -productVersion )
 
         $env.PATH = ([
           ($env.HOME | path join ".config" "bin")
@@ -154,6 +153,11 @@
           ^sysctl -n hw.physicalcpu | str trim
         }
       '';
+    };
+
+    # Required for better shell completions
+    fish = {
+      enable = true;
     };
   };
 
