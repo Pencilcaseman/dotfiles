@@ -54,7 +54,6 @@
       "floorp"
       "ghostty"
       "raycast"
-      "libreoffice"
 
       # "netbirdio/tap/netbird-ui" # Installed as an app
     ];

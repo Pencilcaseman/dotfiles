@@ -7,6 +7,7 @@
     nix-tree
 
     # Editors
+    vim
     neovim
     fresh-editor
 
@@ -49,4 +50,12 @@
     # Misc
     topgrade
   ];
+
+  programs = {
+    man = {
+      enable = true;
+      package = pkgs.man;
+      generateCaches = true;
+    };
+  };
 }
