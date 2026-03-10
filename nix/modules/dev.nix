@@ -44,7 +44,7 @@
     cargo-update
 
     # Node/JS
-    nodejs_22
+    nodejs_24
     typescript
     # deno
 
@@ -57,6 +57,9 @@
     texliveFull
     tectonic
     typst
+
+    # AI
+    claude-code # For emergencies only...
   ] ++ lib.optionals pkgs.stdenv.isLinux [
     # On macOS we rely on AppleClang
     (lib.lowPrio gcc)

@@ -48,7 +48,13 @@
 # Don't ask for confirmations (no default value)
 # assume_yes = true
 
-# Do not ask to retry failed steps (default: false)
+# Whether to ask what to do after a step fails (default: true)
+# ask_retry = true
+
+# Number of times to automatically retry a step when it fails (default: 0)
+# auto_retry = 0
+
+# Same as ask_retry = false (default: false) - legacy
 # no_retry = true
 
 # Show the reason for skipped steps (default: false)
@@ -70,7 +76,11 @@
 # Send a notification for every step (default: false)
 # notify_each_step = false
 
-# Skip sending a notification at the end of a run (default: false)
+# When to send a notification at the end of a run
+# (default: "always", allowed values: "always", "never", "on_failure")
+# notify_end = "on_failure"
+
+# Deprecated: use `notify_end = "never"` instead (default: false)
 # skip_notify = true
 
 # The Bash-it branch to update (default: "stable")

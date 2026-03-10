@@ -32,8 +32,6 @@
     git
     wget
     kitty
-    waybar
-    mako
     xwayland-satellite
   ];
 

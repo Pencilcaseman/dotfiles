@@ -15,7 +15,9 @@
   };
 
   # Should be the same as the system name
-  networking.hostName = "Tobys-MacBook-Pro";
+  networking.hostName = "macbook-pro";
+  networking.localHostName = "macbook-pro";
+  networking.computerName = "macbook-pro";
 
   # macOS Defaults
   system.defaults = {
@@ -26,11 +28,22 @@
     menuExtraClock.Show24Hour = true;
   };
 
+  services = {};
+
+  networking = {
+    applicationFirewall = {
+      enable = true;
+      enableStealthMode = true;
+    };
+  };
+
+  programs = {
+    _1password.enable = true;
+    _1password-gui.enable = true;
+  };
+
   # Global system packages
   environment.systemPackages = [ pkgs.vim pkgs.git ];
-
-  # Zsh is required on macOS regardless of other shells used
-  programs.zsh.enable = true;
 
   # Homebrew
   homebrew = {
@@ -53,7 +66,9 @@
     casks = [
       "floorp"
       "ghostty"
-      "raycast"
+      "mac-mouse-fix"
+      "monarch"
+      "claude"
 
       # "netbirdio/tap/netbird-ui" # Installed as an app
     ];
@@ -63,6 +78,9 @@
       "Xcode" = 497799835;
     };
   };
+
+  # Zsh is required on macOS regardless of other shells used
+  programs.zsh.enable = true;
 
   # Nix-Darwin state version.
   # DO NOT CHANGE WITHOUT READING CHANGELOG!

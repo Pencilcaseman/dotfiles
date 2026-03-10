@@ -2,21 +2,35 @@
   description = "Toby's Nix Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:nix-darwin/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    };
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri.url = "github:sodiboo/niri-flake";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, dms, niri, ... }@inputs:
     let specialArgs = { inherit inputs; };
   in
   {
     # macOS Configuration
-    darwinConfigurations."Tobys-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."macbook-pro" = nix-darwin.lib.darwinSystem {
       system = "aarch64-darwin";
       inherit specialArgs;
       modules = [
@@ -33,12 +47,14 @@
       ];
     };
 
-    nixosConfigurations."tobys-nixos-vm" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."nixos-vm" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       inherit specialArgs;
       modules = [
         ./hosts/nixos-desktop/configuration.nix
         ./modules/nixpkgs.nix
+
+        niri.nixosModules.niri
 
         home-manager.nixosModules.home-manager
         {
