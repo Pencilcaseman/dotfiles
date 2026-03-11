@@ -2,25 +2,37 @@
 .DS_Store
 
 # Things I don't really care about the configuration of for one reason or another
-ghidra/
-helix/runtime/
-ghc/ghci_history
-carapace/
-cabal/
 btop/
+cabal/
+carapace/
+environment.d/
+fontconfig/
+ghc/ghci_history
+ghidra/
+ghostty/themes/
+gtk-*/
+helix/runtime/
+kitty/
+niri/
 peazip/
+pulse/
 raycast/
 swiftpm/
+systemd/
 vale/
 wandb/
 wireshark/
 yarn/
 
 # Stuff I don't really want tracked
+DankMaterialShell/
+cosmic/
+dconf/
+dgop/
+direnv/
 jj/repos/
 jj/workspaces/
 karabiner/automatic_backups/
 op/
-direnv/
 
 nushell/history.txt
