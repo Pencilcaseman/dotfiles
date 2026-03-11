@@ -1,21 +1,39 @@
-{ inputs, config, pkgs, ... }:
-
+{ inputs, config, pkgs, dms, ... }:
 {
   imports = [
     ../../modules/apps.nix
     ../../modules/cli.nix
     ../../modules/dev.nix
     ../../modules/shell/shell.nix
-    inputs.dms.homeModules.dank-material-shell
+
+
+    inputs.dms-shell.modules.default
+    inputs.dms-registry-plugin.modules.default
   ];
 
   home.username = "tobydavis";
   home.homeDirectory = "/home/tobydavis";
 
+  programs.dms-shell = {
+    enable = true;
+
+    systemd = {
+      enable = true;
+      restartIfChanged = true;
+    };
+    
+    enableSystemMonitoring = true;
+    enableVPN = true;
+    enableDynamicScheming = true;
+    enableAudioWavelength = true;
+    enableCalendarEvents = true;
+    enableClipboardPaste = true;
+  };
+
   programs.niri.settings = {
     input = {
-      keyboard.repeat-delay = 200;
-      keyboard.repeat-rate = 35;
+      # keyboard.repeat-delay = 200;
+      # keyboard.repeat-rate = 35;
 
       touchpad = {
         natural-scroll = true;
