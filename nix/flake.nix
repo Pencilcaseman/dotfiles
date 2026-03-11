@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dms = {
+    dms-shell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -30,7 +30,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
-  outputs = { self, nixpkgs, nix-darwin, home-manager, dms, niri, ... }@inputs:
+  outputs = { self, nixpkgs, nix-darwin, home-manager, dms-shell, niri, ... }@inputs:
     let specialArgs = { inherit inputs; };
   in
   {
@@ -56,7 +56,7 @@
       system = "aarch64-linux";
       inherit specialArgs;
       modules = [
-        ./hosts/nixos-desktop/configuration.nix
+        ./hosts/nixos-vm/configuration.nix
         ./modules/nixpkgs.nix
 
         niri.nixosModules.niri
@@ -66,7 +66,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = specialArgs;
-          home-manager.users.tobydavis = import ./hosts/nixos-desktop/home.nix;
+          home-manager.users.tobydavis = import ./hosts/nixos-vm/home.nix;
         }
       ];
     };

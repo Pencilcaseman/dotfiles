@@ -8,7 +8,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "tobys-nixos-vm";
+  networking.hostName = "nixos-vm";
   networking.networkmanager.enable = true;
 
   programs.niri.enable = true;

@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, dms, ... }:
+{ inputs, config, pkgs, dms-shell, ... }:
 {
   imports = [
     ../../modules/apps.nix
@@ -7,8 +7,8 @@
     ../../modules/shell/shell.nix
 
 
-    inputs.dms-shell.modules.default
-    inputs.dms-registry-plugin.modules.default
+    inputs.dms-shell.homeModules.dank-material-shell
+    inputs.dms-plugin-registry.homeModules.default
   ];
 
   home.username = "tobydavis";
@@ -21,7 +21,7 @@
       enable = true;
       restartIfChanged = true;
     };
-    
+
     enableSystemMonitoring = true;
     enableVPN = true;
     enableDynamicScheming = true;
