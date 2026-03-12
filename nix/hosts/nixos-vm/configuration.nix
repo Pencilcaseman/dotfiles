@@ -1,6 +1,5 @@
 { pkgs, lib, modulesPath, ... }:
 {
-  nix.package = pkgs.lix;
   imports = [
     ./hardware-configuration.nix
   ];
@@ -10,10 +9,12 @@
     stdenvLLVM = pkgs.overrideCC llvmPkgs.stdenv llvmPkgs.clangUseLLVM;
     optimizedKernel = pkgs.linuxPackages_latest.kernel.override {
       stdenv = stdenvLLVM;
+
       extraMakeFlags = [
         "LLVM=1"
         "KCFLAGS=-O3"
       ];
+
       structuredExtraConfig = with lib.kernel; {
         # Clang full LTO
         LTO_NONE = lib.mkForce no;
@@ -68,6 +69,7 @@
         TRANSPARENT_HUGEPAGE = yes;
         TRANSPARENT_HUGEPAGE_MADVISE = yes;
       };
+
       autoModules = true;
       ignoreConfigErrors = true;
     };
@@ -90,7 +92,7 @@
     isNormalUser = true;
     description = "Toby Davis";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
   };
 
   programs.zsh.enable = true;

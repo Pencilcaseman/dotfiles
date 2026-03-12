@@ -32,12 +32,12 @@
 
   programs.niri.settings = {
     input = {
-      # keyboard.repeat-delay = 200;
-      # keyboard.repeat-rate = 35;
+      keyboard.repeat-delay = 200;
+      keyboard.repeat-rate = 35;
 
       touchpad = {
-        natural-scroll = true;
-        tap = true;
+        natural-scroll = false;
+        tap = false;
         dwt = true;
         accel-profile = "adaptive";
       };
@@ -51,8 +51,12 @@
       warp-mouse-to-focus.enable = true;
     };
 
+    outputs = {
+      "Virtual-1".scale = 2.0;
+    };
+
     cursor = {
-      size = 24;
+      size = 32;
       hide-when-typing = true;
     };
 
@@ -88,7 +92,7 @@
       # App launching
       "Mod+Return".action.spawn = "kitty";
 
-      # Window management (Cmd-style)
+      # Window management
       "Mod+Q".action.close-window = {};
       "Mod+F".action.maximize-column = {};
 
