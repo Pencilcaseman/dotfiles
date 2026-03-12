@@ -9,7 +9,8 @@
 
           extraMakeFlags = [
             "LLVM=1"
-            "KCFLAGS='-O3 -flto -march=native'"
+            "KCPPFLAGS=\"-O3 -march=native\""
+            "KCFLAGS=\"-O3 -march=native\""
           ];
 
           structuredExtraConfig = with lib.kernel; {
