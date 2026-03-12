@@ -23,6 +23,7 @@ vale/
 wandb/
 wireshark/
 yarn/
+libreoffice/
 
 # Stuff I don't really want tracked
 DankMaterialShell/
