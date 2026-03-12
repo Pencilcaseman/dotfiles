@@ -36,9 +36,9 @@
         DEFAULT_BBR = yes;
 
         # ZRAM compressed swap
-        ZRAM = yes;
-        ZRAM_DEF_COMP_ZSTD = yes;
-        ZSWAP = yes;
+        ZRAM = lib.mkForce yes;
+        ZRAM_DEF_COMP_ZSTD = lib.mkForce yes;
+        ZSWAP = lib.mkForce yes;
 
         # Compiler dead code elimination
         LD_DEAD_CODE_DATA_ELIMINATION = yes;
