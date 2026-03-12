@@ -26,11 +26,6 @@
     };
 
     provides.nixos-vm = {
-      includes = [
-        den.aspects.nixos-vm-niri-desktop
-        den.aspects.nixos-vm-dms-shell
-      ];
-
       homeManager = { pkgs, ... }: {
         home.homeDirectory = "/home/tobydavis";
         home.packages = [ pkgs.wl-clipboard ];
