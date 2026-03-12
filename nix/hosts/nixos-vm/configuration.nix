@@ -56,8 +56,6 @@
         DAMON_VADDR = yes;
         DAMON_PADDR = yes;
         DAMON_RECLAIM = yes;
-
-        LOCALVERSION = freeform "-optimized";
       };
       autoModules = true;
       ignoreConfigErrors = true;
