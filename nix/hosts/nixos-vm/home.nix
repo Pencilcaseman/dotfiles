@@ -91,7 +91,6 @@
       # Window management (Cmd-style)
       "Mod+Q".action.close-window = {};
       "Mod+F".action.maximize-column = {};
-      "Mod+Shift+F".action.toggle-fullscreen = {};
 
       # Focus
       "Mod+H".action.focus-column-left = {};
@@ -114,9 +113,6 @@
       "Mod+Minus".action.set-column-width = "-10%";
       "Mod+Equal".action.set-column-width = "+10%";
 
-      # Floating
-      "Mod+Shift+Space".action.toggle-floating = {};
-
       # Workspaces
       "Mod+1".action.focus-workspace = 1;
       "Mod+2".action.focus-workspace = 2;
@@ -128,11 +124,6 @@
       "Mod+Shift+3".action.move-window-to-workspace = 3;
       "Mod+Shift+4".action.move-window-to-workspace = 4;
       "Mod+Shift+5".action.move-window-to-workspace = 5;
-
-      # Screenshots
-      "Print".action.screenshot-screen = {};
-      "Shift+Print".action.screenshot-ui = {};
-      "Mod+Print".action.screenshot-window = {};
 
       # Overview
       "Mod+Tab".action.open-overview = {};
