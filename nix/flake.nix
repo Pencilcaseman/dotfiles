@@ -18,6 +18,9 @@
 
     nixpkgs-lib.follows = "nixpkgs";
 
+    # Kernel
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+
     # Core
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 

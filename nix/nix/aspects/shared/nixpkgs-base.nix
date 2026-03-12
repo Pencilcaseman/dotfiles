@@ -14,6 +14,7 @@
 
       nixpkgs.overlays = [
         inputs.neovim-nightly-overlay.overlays.default
+        inputs.nix-cachyos-kernel.overlays.default
       ] ++ (import ../../../overlays { inherit inputs; });
 
       home-manager.useGlobalPkgs = true;
