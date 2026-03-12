@@ -13,7 +13,7 @@
         LTO_CLANG_FULL = yes;
 
         # Preemption — full preempt for lowest latency
-        PREEMPT = yes;
+        PREEMPT = lib.mkForce yes;
         PREEMPT_VOLUNTARY = lib.mkForce no;
 
         # 1000Hz tick for responsive scheduling
