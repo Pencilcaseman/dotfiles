@@ -21,8 +21,16 @@
 
       programs.niri.enable = true;
 
-      services.displayManager.sddm.enable = true;
-      services.displayManager.sddm.wayland.enable = true;
+      services = {
+        displayManager = {
+          sddm.enable = true;
+          sddm.wayland.enable = true;
+        };
+
+        openssh = {
+          enable = true;
+        };
+      };
 
       hardware.graphics.enable = true;
 
