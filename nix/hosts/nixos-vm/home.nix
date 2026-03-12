@@ -14,7 +14,7 @@
   home.username = "tobydavis";
   home.homeDirectory = "/home/tobydavis";
 
-  programs.dms-shell = {
+  programs.dank-material-shell = {
     enable = true;
 
     systemd = {
@@ -24,7 +24,7 @@
 
     enableSystemMonitoring = true;
     enableVPN = true;
-    enableDynamicScheming = true;
+    enableDynamicTheming = true;
     enableAudioWavelength = true;
     enableCalendarEvents = true;
     enableClipboardPaste = true;
