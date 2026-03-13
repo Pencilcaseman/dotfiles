@@ -54,7 +54,11 @@
         };
 
         spawn-at-startup = [
-          { argv = [ "xwayland-satellite" ]; }
+          {
+            command = [
+              "noctalia-shell"
+            ];
+          }
         ];
 
         screenshot-path = "~/Pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png";

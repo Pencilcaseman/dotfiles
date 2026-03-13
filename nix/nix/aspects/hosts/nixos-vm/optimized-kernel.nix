@@ -32,6 +32,15 @@
           makeFlags = (old.makeFlags or []) ++ [
             "KCFLAGS=-O3 -march=native"
             "KCPPFLAGS=-O3 -march=native"
+            "LD=ld.lld"
+            "AR=llvm-ar"
+            "NM=llvm-nm"
+            "STRIP=llvm-strip"
+            "OBJCOPY=llvm-objcopy"
+            "OBJDUMP=llvm-objdump"
+            "READELF=llvm-readelf"
+            "HOSTLD=ld.lld"
+            "HOSTAR=llvm-ar"
           ];
         });
       in
