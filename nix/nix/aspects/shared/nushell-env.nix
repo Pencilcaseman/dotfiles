@@ -26,11 +26,6 @@
           enableNushellIntegration = true;
         };
 
-        atuin = {
-          enable = true;
-          enableNushellIntegration = true;
-        };
-
         carapace = {
           enable = true;
           enableNushellIntegration = true;
@@ -92,10 +87,19 @@
           extraConfig = ''
             $env.config = {
               show_banner: false,
+
               edit_mode: "vi",
+
               cursor_shape: {
                 vi_insert: line,
                 vi_normal: block,
+              },
+
+              history: {
+                file_format: sqlite,
+                max_size: 1_000_000,
+                sync_on_enter: true,
+                isolation: true,
               },
             }
 

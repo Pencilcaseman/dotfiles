@@ -15,6 +15,7 @@
 
         # Python
         (python3.withPackages (python-pkgs: with python-pkgs; [
+          ipython
           requests
           numpy
           matplotlib
@@ -39,6 +40,9 @@
         cargo-release
         cargo-show-asm
         cargo-update
+
+        # Golang
+        go
 
         # Node/JS
         nodejs_24
