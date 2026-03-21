@@ -13,6 +13,9 @@
         neovim
         fresh-editor
 
+        # Editor-related
+        tree-sitter
+
         # Multiplexers
         tmux
         zellij
@@ -20,6 +23,7 @@
         # Core Tools
         bat
         btop
+        bottom
         dust
         fd
         flamegraph
@@ -50,7 +54,17 @@
         imagemagick
 
         # Misc
+        speedtest-cli
         topgrade
+
+        # Manuals
+        tealdeer
+        rusty-man
+        cppman
+        man-pages
+        man-pages-posix
+      ] ++ lib.optionals pkgs.stdenv.isLinux [
+        tailscale # Installed via .dmg on macOS
       ];
 
       programs = {

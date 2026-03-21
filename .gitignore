@@ -24,6 +24,8 @@ wandb/
 wireshark/
 yarn/
 libreoffice/
+cppman/
+gh/
 
 # Stuff I don't really want tracked
 DankMaterialShell/

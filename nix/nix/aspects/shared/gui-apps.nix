@@ -11,9 +11,6 @@
       ] ++ lib.optionals pkgs.stdenv.isLinux [
         ghostty
 
-        netbird
-        netbird-ui
-
         libreoffice-fresh
 
         obs-studio

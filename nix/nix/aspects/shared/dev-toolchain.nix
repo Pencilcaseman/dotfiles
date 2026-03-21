@@ -29,6 +29,8 @@
 
         # Rust
         rustup
+        dioxus-cli
+        wasm-bindgen-cli
 
         cargo-audit
         cargo-binstall
@@ -57,6 +59,9 @@
         texliveFull
         tectonic
         typst
+
+        # Language Servers
+        nixd
 
         # AI
         claude-code

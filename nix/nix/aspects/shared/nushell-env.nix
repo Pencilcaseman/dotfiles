@@ -41,7 +41,6 @@
           shellAliases = {
             cloc = "tokei";
             btmb = "btm --basic";
-            sg   = "gh copilot suggest";
             fs   = "yazi";
             lg   = "lazygit";
 
