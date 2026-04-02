@@ -5,14 +5,17 @@
 btop/
 cabal/
 carapace/
+cppman/
 environment.d/
 fontconfig/
+gh/
 ghc/ghci_history
 ghidra/
 ghostty/themes/
 gtk-*/
 helix/runtime/
 kitty/
+libreoffice/
 niri/
 peazip/
 pulse/
@@ -23,9 +26,6 @@ vale/
 wandb/
 wireshark/
 yarn/
-libreoffice/
-cppman/
-gh/
 
 # Stuff I don't really want tracked
 DankMaterialShell/
@@ -37,5 +37,6 @@ jj/repos/
 jj/workspaces/
 karabiner/automatic_backups/
 op/
+qBittorrent/
 
 nushell/history*

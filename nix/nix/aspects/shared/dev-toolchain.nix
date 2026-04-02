@@ -55,6 +55,10 @@
         gradle
         maven
 
+        # OCaml
+        ocaml
+        opam
+
         # Typesetting
         texliveFull
         tectonic

@@ -8,6 +8,7 @@
         audacity
         signal-desktop
         vesktop
+        qbittorrent
       ] ++ lib.optionals pkgs.stdenv.isLinux [
         ghostty
 

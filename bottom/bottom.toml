@@ -1,0 +1,30 @@
+[flags]
+regex = true
+battery = true
+rate = "250ms"
+network_use_bytes = true
+unnormalized_cpu = true
+enable_cache_memory = true
+process_memory_as_value = true
+
+[[row]]
+  [[row.child]]
+    type = "cpu"
+
+[[row]]
+  [[row.child]]
+    type = "mem"
+  [[row.child]]
+    type = "proc"
+
+[[row]]
+  [[row.child]]
+    type = "net"
+  [[row.child]]
+    type = "disk"
+
+[[row]]
+  [[row.child]]
+    type = "temp"
+  [[row.child]]
+    type = "batt"
