@@ -8,7 +8,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 # If nu exists, set the shell to that
 if which nu >/dev/null 2>&1; then
-	export SHELL=nu
+	export SHELL=$(which nu)
 fi
 
 if [ -z "${NO_ZELLIJ_PLZ}" ]; then

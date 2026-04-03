@@ -21,6 +21,7 @@
         zellij
 
         # Core Tools
+        _7zip-zstd
         bat
         btop
         bottom
@@ -35,6 +36,7 @@
         samply
         tokei
         tree
+        typos
         unzip
         wget
         yazi

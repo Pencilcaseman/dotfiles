@@ -2,62 +2,44 @@
 final: prev:
 let
   llvm = prev.buildPackages.llvmPackages_latest;
-  customStdenv = prev.overrideCC llvm.stdenv (
-    llvm.stdenv.cc.override {
-      bintools = llvm.bintools;
-    }
-  );
+  stdenv = llvm.stdenv;
 
-  optimizedCFlags = toString [
+  baseCFlags = toString [
     "-O3"
     "-march=native"
-    "-flto"
-    "-fPIC"
     "-fomit-frame-pointer"
     "-DNDEBUG"
     "-Wno-error"
   ];
 in
 {
-  luajit = prev.luajit.overrideAttrs (oldAttrs: {
-    env = (oldAttrs.env or {}) // {
-      NIX_CFLAGS_COMPILE = optimizedCFlags;
-    };
-  });
+  luajit = (prev.luajit.override { inherit stdenv; }).overrideAttrs {
+    env.NIX_CFLAGS_COMPILE = baseCFlags;
+  };
 
-  tree-sitter = (prev.tree-sitter.override {
-    stdenv = customStdenv;
-  }).overrideAttrs (oldAttrs: {
-    env = (oldAttrs.env or {}) // {
-      NIX_CFLAGS_COMPILE = optimizedCFlags;
-    };
-  });
+  tree-sitter = (prev.tree-sitter.override { inherit stdenv; }).overrideAttrs {
+    env.NIX_CFLAGS_COMPILE = baseCFlags;
+  };
 
-  neovim-unwrapped = (prev.neovim-unwrapped.override {
-    stdenv = customStdenv;
-  }).overrideAttrs (oldAttrs: {
-    nativeBuildInputs = (oldAttrs.nativeBuildInputs or []) ++ [
-      llvm.lld
-    ];
-
-    buildInputs = (oldAttrs.buildInputs or []) ++ [
-      final.mimalloc
-    ];
-
-    cmakeFlags = (oldAttrs.cmakeFlags or []) ++ [
+  neovim-unwrapped = (prev.neovim-unwrapped.override { inherit stdenv; }).overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ llvm.lld ];
+    buildInputs = (old.buildInputs or []) ++ [ final.mimalloc ];
+    cmakeFlags = (old.cmakeFlags or []) ++ [
       "-DCMAKE_BUILD_TYPE=Release"
       "-DENABLE_LTO=ON"
+      "-DCMAKE_EXE_LINKER_FLAGS=-fuse-ld=lld"
+      "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=lld"
+      "-DCMAKE_MODULE_LINKER_FLAGS=-fuse-ld=lld"
     ];
-
-    env = (oldAttrs.env or {}) // {
-      NIX_CFLAGS_COMPILE = optimizedCFlags;
+    env = {
+      NIX_CFLAGS_COMPILE = "${baseCFlags} -fPIC";
       NIX_LDFLAGS = "-lmimalloc";
     };
   });
 
   neovim = prev.wrapNeovim final.neovim-unwrapped {
-    viAlias = true;
-    vimAlias = true;
+    viAlias = false;
+    vimAlias = false;
     withPython3 = true;
     withNodeJs = true;
     withRuby = true;

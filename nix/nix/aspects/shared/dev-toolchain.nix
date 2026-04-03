@@ -29,8 +29,6 @@
 
         # Rust
         rustup
-        dioxus-cli
-        wasm-bindgen-cli
 
         cargo-audit
         cargo-binstall
