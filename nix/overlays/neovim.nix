@@ -23,7 +23,6 @@ in
 
   neovim-unwrapped = (prev.neovim-unwrapped.override { inherit stdenv; }).overrideAttrs (old: {
     nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ llvm.lld ];
-    buildInputs = (old.buildInputs or []) ++ [ final.mimalloc ];
     cmakeFlags = (old.cmakeFlags or []) ++ [
       "-DCMAKE_BUILD_TYPE=Release"
       "-DENABLE_LTO=ON"
@@ -31,10 +30,7 @@ in
       "-DCMAKE_SHARED_LINKER_FLAGS=-fuse-ld=lld"
       "-DCMAKE_MODULE_LINKER_FLAGS=-fuse-ld=lld"
     ];
-    env = {
-      NIX_CFLAGS_COMPILE = "${baseCFlags} -fPIC";
-      NIX_LDFLAGS = "-lmimalloc";
-    };
+    env.NIX_CFLAGS_COMPILE = "${baseCFlags} -fPIC";
   });
 
   neovim = prev.wrapNeovim final.neovim-unwrapped {
