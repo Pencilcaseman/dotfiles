@@ -20,6 +20,15 @@
         gnome-notes
         gnome-chess
         gnome-sudoku
+
+        # Desktop utilities
+        nautilus
+        pavucontrol
+        networkmanagerapplet
+        grim
+        slurp
+        cliphist
+        brightnessctl
       ];
     };
   };

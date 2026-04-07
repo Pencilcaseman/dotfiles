@@ -43,7 +43,10 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 32 * 1024; # 32 GB
+  }];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   hardware.parallels.enable = true;

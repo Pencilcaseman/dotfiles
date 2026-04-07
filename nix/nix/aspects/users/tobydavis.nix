@@ -29,6 +29,13 @@
       homeManager = { pkgs, ... }: {
         home.homeDirectory = "/home/tobydavis";
         home.packages = [ pkgs.wl-clipboard ];
+
+        programs.ssh = {
+          enable = true;
+          addKeysToAgent = "yes";
+        };
+
+        services.ssh-agent.enable = true;
       };
     };
   };

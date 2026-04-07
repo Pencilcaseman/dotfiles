@@ -23,8 +23,12 @@
 
       services = {
         displayManager = {
-          sddm.enable = true;
-          sddm.wayland.enable = true;
+          sddm = {
+            enable = true;
+            wayland.enable = true;
+            theme = "sddm-astronaut-theme";
+            extraPackages = with pkgs; [ sddm-astronaut ];
+          };
         };
 
         openssh = {
@@ -36,6 +40,8 @@
 
       programs.zsh.enable = true;
 
+      security.polkit.enable = true;
+
       environment.systemPackages = with pkgs; [
         vim
         neovim
@@ -44,6 +50,7 @@
         wget
         kitty
         xwayland-satellite
+        polkit_gnome
       ];
     };
   };

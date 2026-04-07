@@ -1,10 +1,26 @@
 { inputs, ... }:
 {
   den.aspects.nixos-vm-noctalia-shell = {
-    homeManager = { ... }: {
+    homeManager = { pkgs, ... }: {
       imports = [
         inputs.noctalia.homeModules.default
       ];
+
+      systemd.user.services.noctalia-shell = {
+        Unit = {
+          Description = "Noctalia desktop shell";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session.target" ];
+        };
+        Service = {
+          ExecStart = "${pkgs.quickshell}/bin/qs -c noctalia-shell";
+          Restart = "on-failure";
+          RestartSec = 2;
+        };
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
 
       programs.noctalia-shell = {
         enable = true;
