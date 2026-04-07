@@ -3,8 +3,9 @@
     homeManager = { ... }: {
       programs.niri.settings = {
         input = {
-          keyboard.repeat-delay = 200;
-          keyboard.repeat-rate = 35;
+          # A bit dodgy in the VM
+          keyboard.repeat-delay = 300;
+          keyboard.repeat-rate = 40;
 
           touchpad = {
             natural-scroll = false;
