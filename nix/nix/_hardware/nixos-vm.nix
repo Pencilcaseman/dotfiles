@@ -16,19 +16,19 @@
   fileSystems."/" =
     { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=@" "compress=zstd" ];
     };
 
   fileSystems."/home" =
     { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@home" "compress=zstd" ];
     };
 
   fileSystems."/nix" =
     { device = "/dev/mapper/cryptroot";
       fsType = "btrfs";
-      options = [ "subvol=@nix" ];
+      options = [ "subvol=@nix" "compress=zstd" ];
     };
 
   fileSystems."/swap" =
