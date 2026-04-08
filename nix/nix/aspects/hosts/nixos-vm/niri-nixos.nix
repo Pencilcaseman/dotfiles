@@ -6,5 +6,11 @@
         inputs.niri.nixosModules.niri
       ];
     };
+
+    homeManager = {
+      imports = [
+        inputs.niri.homeModules.niri
+      ];
+    };
   };
 }

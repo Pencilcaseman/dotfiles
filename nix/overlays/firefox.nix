@@ -1,11 +1,9 @@
 final: prev:
 let
   llvm = prev.buildPackages.llvmPackages_latest;
-  customStdenv = prev.overrideCC llvm.stdenv (
-    llvm.stdenv.cc.override {
-      bintools = llvm.bintools;
-    }
-  );
+  customStdenv = if prev.stdenv.hostPlatform.isDarwin
+    then prev.overrideCC prev.stdenv llvm.clang
+    else prev.overrideCC llvm.stdenv (llvm.stdenv.cc.override { bintools = llvm.bintools; });
 
   archOptFlags =
     if prev.stdenv.hostPlatform.isAarch64
@@ -28,9 +26,12 @@ in
 
     NIX_CFLAGS_COMPILE = toString ([
       "-O3"
+      "-flto"
+      "-fno-plt"
       "-fPIC"
       "-DNDEBUG"
       "-fomit-frame-pointer"
+      "-mllvm" "-polly"
       "-Wno-error"
     ] ++ archOptFlags);
 
