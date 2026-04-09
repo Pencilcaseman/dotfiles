@@ -8,20 +8,31 @@ let
     "-C llvm-args=-polly"
   ];
 
-  optimizedCargo = prev.symlinkJoin {
-    name = "cargo-optimized-${prev.cargo.version}";
-    paths = [ prev.cargo ];
-    nativeBuildInputs = [ prev.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/cargo \
-        --suffix CARGO_BUILD_RUSTFLAGS " " "${optimizedRustFlags}"
-    '';
-  };
+  optimize = pkg: pkg.overrideAttrs (old: {
+    CARGO_BUILD_RUSTFLAGS = "${old.CARGO_BUILD_RUSTFLAGS or ""} ${optimizedRustFlags}";
+  });
+
+  optimizedPackages = [
+    "nushell"
+    "starship"
+    "nh"
+    "ripgrep"
+    "ripgrep-all"
+    "fd"
+    "bat"
+    "dust"
+    "bottom"
+    "zoxide"
+    "yazi"
+    "zellij"
+    "jujutsu"
+    "gitoxide"
+    "ruff"
+    "uv"
+    "typst"
+  ];
 in
-{
-  rustPlatform = prev.rustPlatform // {
-    buildRustPackage = prev.rustPlatform.buildRustPackage.override {
-      cargo = optimizedCargo;
-    };
-  };
-}
+builtins.listToAttrs (map (name: {
+  inherit name;
+  value = optimize prev.${name};
+}) optimizedPackages)
