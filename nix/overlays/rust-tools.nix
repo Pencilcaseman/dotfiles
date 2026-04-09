@@ -1,6 +1,6 @@
 final: prev:
 let
-  optimizedRustFlags = toString [
+  optimisedRustFlags = toString [
     "-C opt-level=3"
     "-C target-cpu=native"
     "-C lto=fat"
@@ -8,11 +8,11 @@ let
     "-C llvm-args=-polly"
   ];
 
-  optimize = pkg: pkg.overrideAttrs (old: {
-    CARGO_BUILD_RUSTFLAGS = "${old.CARGO_BUILD_RUSTFLAGS or ""} ${optimizedRustFlags}";
+  optimise = pkg: pkg.overrideAttrs (old: {
+    CARGO_BUILD_RUSTFLAGS = "${old.CARGO_BUILD_RUSTFLAGS or ""} ${optimisedRustFlags}";
   });
 
-  optimizedPackages = [
+  optimisedPackages = [
     "nushell"
     "starship"
     "nh"
@@ -35,5 +35,5 @@ let
 in
 builtins.listToAttrs (map (name: {
   inherit name;
-  value = optimize prev.${name};
-}) optimizedPackages)
+  value = optimise prev.${name};
+}) optimisedPackages)

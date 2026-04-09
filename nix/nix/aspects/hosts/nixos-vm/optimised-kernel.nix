@@ -1,6 +1,6 @@
 { inputs, lib, pkgs, ... }:
 {
-  den.aspects.nixos-vm-optimized-kernel = {
+  den.aspects.nixos-vm-optimised-kernel = {
     nixos = { pkgs, lib, ... }:
       let
         llvm = pkgs.buildPackages.llvmPackages_latest;
@@ -9,7 +9,7 @@
             bintools = llvm.bintools;
           }
         );
-        optimizedKernel = (pkgs.linuxPackages_latest.kernel.override {
+        optimisedKernel = (pkgs.linuxPackages_latest.kernel.override {
           stdenv = stdenvLLVM;
           extraMakeFlags = [ "LLVM=1" ];
           structuredExtraConfig = with lib.kernel; {
@@ -45,7 +45,7 @@
         });
       in
       {
-        boot.kernelPackages = pkgs.linuxPackagesFor optimizedKernel;
+        boot.kernelPackages = pkgs.linuxPackagesFor optimisedKernel;
       };
   };
 }
@@ -54,7 +54,7 @@
 #
 # { inputs, ... }:
 # {
-#   den.aspects.nixos-vm-optimized-kernel = {
+#   den.aspects.nixos-vm-optimised-kernel = {
 #     nixos = { pkgs, ... }:
 #     let
 #       kernel = (pkgs.cachyosKernels.linux-cachyos-latest.override {

@@ -3,7 +3,7 @@
   den.aspects.nixos-vm = {
     includes = [
       den.aspects.nixpkgs-base
-      den.aspects.nixos-vm-optimized-kernel
+      den.aspects.nixos-vm-optimised-kernel
       den.aspects.nixos-vm-niri-nixos
       den.aspects.nixos-vm-niri-desktop
       den.aspects.nixos-vm-noctalia-shell
