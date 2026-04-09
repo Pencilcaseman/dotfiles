@@ -23,10 +23,6 @@ in
     env.NIX_CFLAGS_COMPILE = baseCFlags;
   };
 
-  tree-sitter = (prev.tree-sitter.override { inherit stdenv; }).overrideAttrs {
-    env.NIX_CFLAGS_COMPILE = baseCFlags;
-  };
-
   neovim-unwrapped = (prev.neovim-unwrapped.override { inherit stdenv; }).overrideAttrs (old: {
     buildInputs = (old.buildInputs or []) ++ [ prev.jemalloc ];
     cmakeFlags = (old.cmakeFlags or []) ++ [

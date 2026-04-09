@@ -29,6 +29,7 @@ let
     "gitoxide"
     "ruff"
     "uv"
+    "tree-sitter"
     "typst"
   ];
 in
