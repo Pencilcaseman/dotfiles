@@ -12,7 +12,6 @@ let
     "-fomit-frame-pointer"
     "-fno-math-errno"
     "-fno-semantic-interposition"
-    "-mllvm" "-polly"
     "-DNDEBUG"
     "-Wno-error"
   ];
