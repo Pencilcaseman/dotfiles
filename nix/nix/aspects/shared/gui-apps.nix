@@ -2,13 +2,14 @@
   den.aspects.gui-apps = {
     homeManager = { pkgs, lib, ... }: {
       home.packages = with pkgs; [
+        anki
+        audacity
         firefox
         neovide
+        qbittorrent
         rerun
-        audacity
         signal-desktop
         vesktop
-        qbittorrent
       ] ++ lib.optionals pkgs.stdenv.isLinux [
         ghostty
 

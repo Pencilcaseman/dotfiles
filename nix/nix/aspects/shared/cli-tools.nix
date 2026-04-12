@@ -52,8 +52,13 @@
         # Media tools
         ffmpeg
         imagemagick
+        mpv
+        poppler-utils
 
         # Misc
+        aria2
+        awscli2
+        motrix-next
         speedtest-cli
         topgrade
 
