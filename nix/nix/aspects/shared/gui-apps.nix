@@ -1,5 +1,10 @@
+{ den, ... }:
 {
   den.aspects.gui-apps = {
+    includes = [
+      den.aspects.fonts
+    ];
+
     homeManager = { pkgs, lib, ... }: {
       home.packages = with pkgs; [
         anki
