@@ -7,6 +7,7 @@
         nh
         nix-output-monitor
         nix-tree
+        nixpkgs-track
 
         # Editors
         vim
@@ -62,17 +63,25 @@
         speedtest-cli
         topgrade
 
-        # Manuals
+        # Manuals and docs
         tealdeer
         rusty-man
         cppman
         man-pages
         man-pages-posix
+        pinfo
       ] ++ lib.optionals pkgs.stdenv.isLinux [
+        linux-manual
         tailscale # Installed via .dmg on macOS
       ];
 
+      home.sessionVariables = {
+        MANPAGER = "bat -plman";
+      };
+
       programs = {
+        info.enable = true;
+
         jujutsu = {
           enable = true;
 

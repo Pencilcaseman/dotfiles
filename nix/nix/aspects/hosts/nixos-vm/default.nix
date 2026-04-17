@@ -14,6 +14,12 @@
         ../../../_hardware/nixos-vm.nix
       ];
 
+      documentation = {
+        dev.enable = true;
+        man.generateCaches = true;
+        nixos.includeAllModules = true;
+      };
+
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
