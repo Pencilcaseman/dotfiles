@@ -18,6 +18,7 @@
         dev.enable = true;
         man.generateCaches = true;
         nixos.includeAllModules = true;
+        nixos.options.warningsAreErrors = false;
       };
 
       boot.loader.systemd-boot.enable = true;
