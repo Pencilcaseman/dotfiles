@@ -3,7 +3,7 @@
   den.aspects.nixos-vm = {
     includes = [
       den.aspects.nixpkgs-base
-      den.aspects.nixos-vm-optimised-kernel
+      # den.aspects.nixos-vm-optimised-kernel
       den.aspects.nixos-vm-niri-nixos
       den.aspects.nixos-vm-niri-desktop
       den.aspects.nixos-vm-noctalia-shell
@@ -30,11 +30,19 @@
 
       services = {
         displayManager = {
+          defaultSession = "niri";
+
           sddm = {
             enable = true;
             wayland.enable = true;
+            package = pkgs.kdePackages.sddm;
             theme = "sddm-astronaut-theme";
-            extraPackages = with pkgs; [ sddm-astronaut ];
+            extraPackages = with pkgs; [
+              sddm-astronaut
+              kdePackages.qtsvg
+              kdePackages.qtmultimedia
+              kdePackages.qtvirtualkeyboard
+            ];
           };
         };
 
