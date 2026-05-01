@@ -11,42 +11,18 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/f241c8c9-6ded-4e7e-851a-c6178034170c";
-
   fileSystems."/" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=@" "compress=zstd" ];
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=@home" "compress=zstd" ];
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" "compress=zstd" ];
-    };
-
-  fileSystems."/swap" =
-    { device = "/dev/mapper/cryptroot";
-      fsType = "btrfs";
-      options = [ "subvol=@swap" ];
+    { device = "/dev/disk/by-uuid/3663ff2f-eb3c-438d-8bb0-5bdc246314ae";
+      fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/DE0A-8D4D";
+    { device = "/dev/disk/by-uuid/2E70-BAE2";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 32 * 1024; # 32 GB
-  }];
+  swapDevices = [  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
   hardware.parallels.enable = true;
