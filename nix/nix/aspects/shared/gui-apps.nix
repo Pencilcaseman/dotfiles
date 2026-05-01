@@ -9,7 +9,7 @@
       home.packages = with pkgs; [
         anki
         audacity
-        cryptomator
+        # cryptomator
         firefox
         neovide
         qbittorrent
