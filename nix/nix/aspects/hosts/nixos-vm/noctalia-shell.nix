@@ -1,9 +1,13 @@
 { inputs, ... }:
 {
   den.aspects.nixos-vm-noctalia-shell = {
-    homeManager = { ... }: {
+    homeManager = { pkgs, ... }: {
       imports = [
         inputs.noctalia.homeModules.default
+      ];
+
+      home.packages = [
+        inputs.noctalia.packages.${pkgs.system}.default
       ];
 
       programs.noctalia-shell = {

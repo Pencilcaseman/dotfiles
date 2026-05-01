@@ -59,6 +59,7 @@
         # Misc
         aria2
         awscli2
+        cryptomator-cli
         motrix-next
         speedtest-cli
         topgrade
